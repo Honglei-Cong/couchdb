@@ -18,7 +18,7 @@
     parse_rep_db/3,
     parse_rep_doc_without_id/1,
     parse_rep_doc_without_id/2,
-    before_doc_update/2,
+    before_doc_update/3,
     after_doc_read/2,
     ensure_rep_db_exists/0,
     ensure_rep_ddoc_exists/1,
@@ -616,9 +616,9 @@ ssl_verify_options(false) ->
 
 
 -spec before_doc_update(#doc{}, Db::any()) -> #doc{}.
-before_doc_update(#doc{id = <<?DESIGN_DOC_PREFIX, _/binary>>} = Doc, _Db) ->
+before_doc_update(#doc{id = <<?DESIGN_DOC_PREFIX, _/binary>>} = Doc, _Db, _UpdateType) ->
     Doc;
-before_doc_update(#doc{body = {Body}} = Doc, Db) ->
+before_doc_update(#doc{body = {Body}} = Doc, Db, _UpdateType) ->
     #user_ctx{
        roles = Roles,
        name = Name
