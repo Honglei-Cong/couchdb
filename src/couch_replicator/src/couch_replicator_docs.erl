@@ -615,7 +615,7 @@ ssl_verify_options(false) ->
     [{verify, verify_none}].
 
 
--spec before_doc_update(#doc{}, Db::any()) -> #doc{}.
+-spec before_doc_update(#doc{}, Db::any(), any()) -> #doc{}.
 before_doc_update(#doc{id = <<?DESIGN_DOC_PREFIX, _/binary>>} = Doc, _Db, _UpdateType) ->
     Doc;
 before_doc_update(#doc{body = {Body}} = Doc, Db, _UpdateType) ->
